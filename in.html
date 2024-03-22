@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAPTCHA Generator and Verifier</title>
+</head>
+<style>
+  .captcha-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 500px;
+    border-radius: 10px;
+    
+  
+  }
+  .captcha {
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    margin-bottom: 10px;
+  }
+  .btn{
+    display: flex;
+    background-color: green;
+    color: black;
+    border-radius: 5px;
+    position: relative;
+    left: 110px;
+    bottom: 23px;
+    
+  }
+</style>
+
+<body>
+
+<div class="captcha-container">
+  <div class="captcha" id="captcha"></div><br>
+  <br>
+  <input type="text" id="captchaInput" placeholder="Enter CAPTCHA"><button class="btn" onclick="verifyCaptcha()">Verify</button><br>
+</div>
+
+<script>
+  function generateCaptcha() {
+    var captcha = Math.random().toString(36).substring(7);
+    document.getElementById("captcha").textContent = captcha;
+  }
+
+  function verifyCaptcha() {
+    var userInput = document.getElementById("captchaInput").value;
+    var captcha = document.getElementById("captcha").textContent;
+
+    if (userInput === captcha) {
+      alert("CAPTCHA verified!");
+    } else {
+      alert("CAPTCHA verification failed!");
+    }
+  }
+
+  // Generate CAPTCHA on page load
+  generateCaptcha();
+</script>
+
+</body>
+</html>

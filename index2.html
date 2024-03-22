@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive quiz</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    
+  }
+ 
+  
+  .question {
+    margin-bottom: 10px;
+  }
+  .options label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .submit-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h2>Interactive Quiz</h2>
+  <form id="quizForm">
+    <div class="question">
+      <p>1. What is the capital of France?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="Paris"> Paris</label>
+        <label><input type="radio" name="q1" value="London"> London</label>
+        <label><input type="radio" name="q1" value="Berlin"> Berlin</label>
+      </div>
+    </div>
+    <div class="question">
+      <p>2. What is the largest planet in our solar system?</p>
+      <div class="options">
+        <label><input type="radio" name="q2" value="Jupiter"> Jupiter</label>
+        <label><input type="radio" name="q2" value="Saturn"> Saturn</label>
+        <label><input type="radio" name="q2" value="Mars"> Mars</label>
+      </div>
+    </div>
+    <div class="question">
+      <p>3. What is the chemical symbol for water?</p>
+      <div class="options">
+        <label><input type="radio" name="q3" value="H2O"> H<sub>2</sub>O</label>
+        <label><input type="radio" name="q3" value="CO2"> CO<sub>2</sub></label>
+        <label><input type="radio" name="q3" value="O2"> O<sub>2</sub></label>
+      </div>
+    </div>
+    <button type="button" onclick="submitQuiz()" class="submit-btn">Submit Quiz</button>
+  </form>
+  <div id="result"></div>
+</div>
+
+<script>
+  function submitQuiz() {
+    var form = document.getElementById("quizForm");
+    var score = 0;
+
+    // Question 1
+    if (form.q1.value === "Paris") {
+      score++;
+    }
+    // Question 2
+    if (form.q2.value === "Jupiter") {
+      score++;
+    }
+    // Question 3
+    if (form.q3.value === "H2O") {
+      score++;
+    }
+
+    var resultContainer = document.getElementById("result");
+    resultContainer.innerHTML = "<h2>Your quiz result  " + "score: " +score+ "</h2>";
+  }
+</script>
+
+</body>
+</html>
